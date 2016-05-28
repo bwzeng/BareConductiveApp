@@ -27,7 +27,7 @@ public class DBconnector {
 
         try {
             HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://10.0.2.2/android_connect_db.php");
+            HttpPost httpPost = new HttpPost("http://barecondutive.ddns.net/android_connect_db.php");
             ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("query_string", query_string));
             httpClient.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 5000);

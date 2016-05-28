@@ -34,6 +34,7 @@ import org.w3c.dom.Text;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Timer;
@@ -41,16 +42,14 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
+    //Timing
+    Timer timer = new Timer(true);
+
 
     //private Button button;
     private TextView hint_text;
     private TextView message;
     private TextView time_message;
-
-
-
-
-
 
     public void run() {
         try {
@@ -66,10 +65,19 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //初始化
         super.onCreate(savedInstanceState);
+
+        //設置畫面
         setContentView(R.layout.activity_main);
 
+        //計時器
+        timer.schedule(new TimeTask(), Calendar.getInstance().getTime(),1000);
+
+        //綁定元件
         findViews();
+
+        //設定文字
         setText();
 
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
@@ -117,13 +125,8 @@ public class MainActivity extends AppCompatActivity {
                         JSONObject jsonData = jsonArray.getJSONObject(i);
                         User_Name = jsonData.getString("User_Name");
                     }
-                  //  String Register_Time = jsonData.getString("Register_Time");
-                  //  String Nodes = jsonData.getString("Nodes");
                     message.setText("Welcome "+User_Name);
-                  //  Log.d("User_Name",User_Name);
-                  //  Log.d("Register_Time",Register_Time);
-                   // Log.d("Nodes",Nodes);
-                   // Log.i("test","test");
+
                 } catch(Exception e) {
                      Log.e("log_tag", e.toString());
                 }
@@ -138,5 +141,6 @@ public class MainActivity extends AppCompatActivity {
             String strDate = sdFormat.format(date);
             return strDate;
         }
+
 
 }
