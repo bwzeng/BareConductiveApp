@@ -12,6 +12,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Debug;
+import android.os.Handler;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -43,25 +44,13 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity {
 
     //Timing
-    Timer timer = new Timer(true);
-
-
+    int _second=0;
+    private Handler mHandlerTime = new Handler();
+    boolean isScanning =false;
     //private Button button;
     private TextView hint_text;
     private TextView message;
     private TextView time_message;
-
-    public void run() {
-        try {
-            Thread.sleep(3000);
-            long NowTime = new Date().getTime();
-
-            message.setText("");
-            time_message.setText("");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,9 +59,6 @@ public class MainActivity extends AppCompatActivity {
 
         //設置畫面
         setContentView(R.layout.activity_main);
-
-        //計時器
-        timer.schedule(new TimeTask(), Calendar.getInstance().getTime(),1000);
 
         //綁定元件
         findViews();
@@ -93,6 +79,13 @@ public class MainActivity extends AppCompatActivity {
                 .build());
     }
 
+    @Override
+    public void onDestroy()
+    {
+        mHandlerTime.removeCallbacks(timerRun);
+        super.onDestroy();
+    }
+
     private void findViews() {
         hint_text = (TextView) findViewById(R.id.textView);
         message = (TextView) findViewById(R.id.textView2);
@@ -109,11 +102,13 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onTouchEvent(MotionEvent event) {
 
-            if (event.getAction() == MotionEvent.ACTION_UP) {
-                this.run();
+            if (event.getAction() == MotionEvent.ACTION_UP  ) {
 
-            } else {
+                if(isScanning) return true;
+                mHandlerTime.postDelayed(timerRun, 1000);
+            } else if(event.getAction() == MotionEvent.ACTION_DOWN) {
                 int pointerNum = event.getPointerCount();
+                _second=0;
                 //String user_name =
                // message.setText("get " + pointerNum + " point(s)");
                 time_message.setText(getDateTime());
@@ -142,5 +137,20 @@ public class MainActivity extends AppCompatActivity {
             return strDate;
         }
 
+    private final Runnable timerRun = new Runnable()
+    {
+        public void run()
+        {
+            isScanning=true;
 
+            ++_second; // 經過的秒數 + 1
+            if(_second>5){
+                message.setText("");
+                _second=0;
+                isScanning=false;
+            }else {
+                mHandlerTime.postDelayed(this, 1000);
+            }
+        }
+    };
 }
