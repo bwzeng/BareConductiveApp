@@ -14,17 +14,17 @@
 
   select 'Add no Activity'
 
-3.go to your project position (e.g D:\app\BareConductiveApp)
-  click right mouse
-  select 'git bash here'  (if no,check git install success)
+3.go to your project position (e.g D:\app\BareConductiveApp)  
+  click right mouse  
+  select 'git bash here'  (if no,check git install success)  
 
-4.command these line step by step
-  '''
-  git init
-  git clone https://github.com/bwzeng/BareConductiveApp.git copy
-  cd copy
-  cp ./ ../ -r
-  '''
+4.command these line step by step  
+  ```
+  git init  
+  git clone https://github.com/bwzeng/BareConductiveApp.git copy  
+  cd copy  
+  cp ./ ../ -r  
+  ```
 
 5.reload Android Studio
   update,install and follow any Android Studio requests
