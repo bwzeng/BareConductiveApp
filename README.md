@@ -6,7 +6,7 @@
    java : http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html  
      
 **2.create a new project**  
-  set 'Application name'  
+  set Application name : ***BareConductiveApp***
   <img src=http://i.imgur.com/UrgqqW1.png> </img>
     
   set 'Minimum SDK'  
