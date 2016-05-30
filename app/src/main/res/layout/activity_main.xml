@@ -7,33 +7,24 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.zbw.myapplication.MainActivity">
+    tools:context="com.example.zbw.myapplication.Main">
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Scan card here"
-        android:id="@+id/textView"
+        android:text="ID辨識"
+        android:id="@+id/button_go_detector"
+        android:layout_marginTop="105dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="(card #? detected)"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/textView3"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true" />
-
+        android:text="ID註冊"
+        android:id="@+id/button_go_register"
+        android:layout_marginTop="109dp"
+        android:layout_below="@+id/button_go_detector"
+        android:layout_alignLeft="@+id/button_go_detector"
+        android:layout_alignStart="@+id/button_go_detector" />
 </RelativeLayout>
