@@ -90,7 +90,7 @@ public class register extends AppCompatActivity {
     public String executeQuery(String query) {
         try {
             Log.i("query",query);
-             = DBconnector.executeQuery(query);
+             //= DBconnector.executeQuery(query);
             /*String jresult = DBconnector.executeQuery(query);
             JSONArray jsonArray = new JSONArray(jresult);
             String firstResult;
