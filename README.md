@@ -12,7 +12,9 @@
   set 'Minimum SDK'  
   <img src=http://i.imgur.com/Vh25p0L.png></img>
 
-  select 'Add no Activity'
+
+  select 'Empty Activity'
+
 
 **3.go to your project position** (e.g D:\app\BareConductiveApp)  
   click right mouse  
@@ -24,6 +26,8 @@
   git clone https://github.com/bwzeng/BareConductiveApp.git copy  
   cd copy  
   cp ./ ../ -r  
+  cd ..
+  rm -rf copy/
   ```
 
 **5.reload Android Studio**
